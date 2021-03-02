@@ -64,7 +64,7 @@
 
   #' @name download_forms_all
   #' @rdname download_forms_all
-  #' @title  Returns a dataframe with all forms available for the user
+  #' @title  Returns a tibble with all forms available for the user
   #'
   #' @description Download form from the platform
   #'
@@ -115,7 +115,7 @@
     download_forms_all_df <- left_join(download_forms_all_df, download_forms_all_old, by = c("uid" = "id_string"))
 
 
-    return(download_forms_all_df)
+    return(download_forms_all_df %>% tibble())
   }
 
   #' @name all_exports
