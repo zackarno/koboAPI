@@ -8,7 +8,8 @@ download_form(
   formid,
   user,
   pwd = NULL,
-  api = "https://kobo.humanitarianresponse.info"
+  api = "https://kobo.humanitarianresponse.info",
+  ...
 )
 }
 \arguments{

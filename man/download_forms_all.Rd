@@ -2,7 +2,7 @@
 % Please edit documentation in R/koboAPI.R
 \name{download_forms_all}
 \alias{download_forms_all}
-\title{Returns a dataframe with all forms available for the user}
+\title{Returns a tibble with all forms available for the user}
 \usage{
 download_forms_all(user, pwd, api = "https://kobo.humanitarianresponse.info")
 }

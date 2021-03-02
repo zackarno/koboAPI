@@ -9,7 +9,8 @@ download_data(
   user,
   pwd,
   api = "https://kobo.humanitarianresponse.info",
-  seperator = "\\\\/"
+  seperator = "\\\\/",
+  all_forms = form_data
 )
 }
 \arguments{
