@@ -20,7 +20,7 @@ noGroupsHeader <- function(data,questions,  separator = "\\/") {
   groups <- paste0(as.list(questions%>%filter(type %in% c("begin_group", "begin group"))%>% select(name))[[1]],separator)
   groups <- c(groups, paste0("meta", separator))
   collapse_groups <- str_c(groups, collapse = "|")
-  groups_removed <- unlist(map(names(data), str_remove, collapse_groups))
+  groups_removed <- unlist(map(names(data), str_remove_all, collapse_groups))
   names(data) <- groups_removed
   return(data)
 }
