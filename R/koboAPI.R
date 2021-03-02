@@ -40,13 +40,19 @@
 
 
     choices <- as.data.frame(raw_form_text_json$content$choices)%>%
-      unnest(label)
+      unnest(label) %>%
+      select(-`$autovalue`) %>%
+      rename(form_uid="$kuid") %>%
+      select(form_uid, everything())
       # purrr::modify_depth(2, replace_x, replacement = c(rep("NA", length(languages_labels))))%>%
       # dplyr::mutate(label = purrr::map(label, setNames, languages_labels))%>%
       # unnest_wider(label)
 
     survey <- as.data.frame(raw_form_text_json$content$survey)%>%
-      unnest(label)
+      unnest(label) %>%
+      select(-`$autoname`) %>%
+      rename(form_uid="$kuid") %>%
+      select(form_uid, everything())
       # purrr::modify_depth(2, replace_x, replacement = c(rep("NA", length(languages_labels))))%>%
       # dplyr::mutate(label = purrr::map(label, setNames, languages_labels))%>%
       # unnest_wider(label)
