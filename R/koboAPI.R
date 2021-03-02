@@ -22,6 +22,7 @@
                             ...) {
     if(!exists('pwd') || (pwd == "" || is.null(pwd))){pwd <- readline("Enter password:")}
     if(pwd == "") stop("No password entered.")
+    all_forms<- download_forms_all(user = user, pwd = pwd,api = api)
 
     if(!is.na(suppressWarnings(as.integer(formid)))){
       old_id <- formid
@@ -51,7 +52,7 @@
     survey <- as.data.frame(raw_form_text_json$content$survey)%>%
       unnest(label) %>%
       select(-`$autoname`) %>%
-      mutate()
+      mutate() %>%
       rename(form_uid="$kuid") %>%
       select(form_uid,type, everything())
       # purrr::modify_depth(2, replace_x, replacement = c(rep("NA", length(languages_labels))))%>%
@@ -195,7 +196,7 @@
       stop("API not supported. Please use kf.kobotoolbox.org, or kobo.humanitarianresponse.info API.")
     }
 
-    form <- download_form(formid = formid, user = user, pwd = pwd, all_forms= form_data)
+    form <- download_form(formid = formid, user = user, pwd = pwd)
 
     url_data <- paste0(api_old, "/api/v1/data/",old_id, ".csv")
     raw_data <- GET(url_data, authenticate(user, pwd), progress())
