@@ -51,6 +51,7 @@
     survey <- as.data.frame(raw_form_text_json$content$survey)%>%
       unnest(label) %>%
       select(-`$autoname`) %>%
+      mutate()
       rename(form_uid="$kuid") %>%
       select(form_uid,type, everything())
       # purrr::modify_depth(2, replace_x, replacement = c(rep("NA", length(languages_labels))))%>%

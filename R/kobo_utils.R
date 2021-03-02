@@ -207,7 +207,7 @@ fill_startCol_sm <- function(data, startCol, separator = "\\/"){
 #' @return Returns xlform object with survey sheet set to standard form
 #' @author Zack Arno
 #'
-#' @export stardize_form
+#' @export standardize_form
 standardize_form<- function(xlsform){
   xlsform$survey<-xlsform$survey %>%
     mutate(
