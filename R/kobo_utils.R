@@ -196,3 +196,25 @@ fill_startCol_sm <- function(data, startCol, separator = "\\/"){
 
   return(fill_content)
 }
+
+
+
+#' @name standardize_form
+#' @rdname standardize_form
+#' @title  standardize_from
+#' @description puts xlsform object back in the standard format (same as it was uploaded to server)
+#' @param xlsform xlsform object (list with survey dataframe and choices dataframe)
+#' @return Returns xlform object with survey sheet set to standard form
+#' @author Zack Arno
+#'
+#' @export stardize_form
+standardize_form<- function(xlsform){
+  xlsform$survey<-xlsform$survey %>%
+    mutate(
+      type=glue::glue("{type} {select_from_list_name}" )
+    )
+           return(xlsform)
+}
+
+
+
